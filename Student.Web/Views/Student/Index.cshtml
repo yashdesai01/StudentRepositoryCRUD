@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Student.Database.tblStudentDetail>
+
+@{
+    ViewBag.Title = "Students";
+}
+
+<h4>Student List</h4>
+
+<p>
+    @Html.ActionLink("Create New", "AddStudent")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Student Name
+        </th>
+        <th>
+            Student Status
+        </th>
+        <th>
+            Student State
+        </th>
+        <th>
+            Student Country
+        </th>
+        <th>
+            Student Image
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Status1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StateID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateStudent", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "RemoveStudent", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
