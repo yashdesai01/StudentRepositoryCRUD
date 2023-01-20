@@ -38,22 +38,15 @@ namespace Student.Web.Controllers
         {
             tblStudentDetail StudentObj = new tblStudentDetail()
             {
+                ID = student.ID == 0 ? 0 : student.ID,
                 Name = student.Name,
                 Image = student.Image,
                 CountryID = student.CountryID,
                 StateID = student.StateID,
                 StatusID = student.StatusID
             };
-            if (student.ID == 0)
-            {
-                int result = studentRepository.AddStudent(StudentObj);
-            }
-            else
-            {
-                StudentObj.ID = student.ID;
-                int result = studentRepository.AddStudent(StudentObj);
-            }
-            
+            int result = studentRepository.AddStudent(StudentObj);
+
             return RedirectToAction("Index");
         }
 
